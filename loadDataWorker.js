@@ -9,7 +9,8 @@ self.onmessage = function(e) {
         return response.text();
     })
     .then(data => {
-        var points = data.trim().split('\n').map(row => row.split(',').map(Number));
+        var points = data.trim().split('\n').slice(1).map(row => row.split(',').map(Number));
+        // var points = data.trim().split('\n').map(row => row.split(',').map(Number));
         self.postMessage({node: node, level: level, points: points});
     })
     .catch(error => {
